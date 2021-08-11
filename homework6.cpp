@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 void init_myarray(int* const ptrMyarr1, size_t  myarray_size);
 
 void printed_myarray(int const* const ptrMyarr1, size_t myarray_size);
@@ -12,9 +14,9 @@ void initial_matrix(int** const matrix, size_t const rows, size_t const cols);
 
 void printed_matrix(int const* const* const matrix, size_t const rows, size_t const cols);
 
-void concatenation(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out);
+void concatenation(string const& filename_in_1, string const& filename_in_2, string const& filename_out);
 
-bool user_word_in_file(std::string const& user_word, std::string const& namefile);
+bool user_word_in_file(string const& user_word, string const& namefile);
 
 int main()
 {
@@ -23,16 +25,16 @@ int main()
         int* ptrMyarr1;
         int myarray_size;
 
-        std::cout << "Enter size of your array, please: \n";
-        std::cin >> myarray_size;
+        cout << "Enter size of your array, please: \n";
+        cin >> myarray_size;
 
         if (myarray_size <= 0)
         {
-            std::cerr << "Enter integer size for your array:\n";
+            cerr << "Enter integer size for your array:\n";
             return 1;
         }
 
-        ptrMyarr1 = new (std::nothrow) int[myarray_size];
+        ptrMyarr1 = new (nothrow) int[myarray_size];
 
         if (ptrMyarr1 != nullptr)
         {
@@ -44,7 +46,7 @@ int main()
         }
         else
         {
-            std::cerr << "The program cannot allocate memory for your array\n";
+            cerr << "The program cannot allocate memory for your array\n";
             return 1;
         }
     }
@@ -73,16 +75,16 @@ int main()
     //task 3: Написать программу, которая создаст два текстовых файла (*.txt), примерно по 50-100 символов в каждом (особого значения не имеет с каким именно содержимым). Имена файлов запросить у пользователя.
 
     {
-        std::string filename_1;
-        std::string filename_2;
+        string filename_1;
+        string filename_2;
 
-        std::cout << "Enter the two names of the files that will be created:\n->";
-        std::cin >> filename_1 >> filename_2;
+        cout << "Enter the two names of the files that will be created:\n->";
+        cin >> filename_1 >> filename_2;
 
-        std::ofstream file_1("filename_1.txt");
-        std::ofstream file_2("filename_2.txt");
+        ofstream file_1("filename_1.txt");
+        ofstream file_2("filename_2.txt");
 
-        std::srand(std::time(nullptr));
+        srand(time(nullptr));
 
         for (size_t i = 49; i < 100; i++)
         {
@@ -91,7 +93,7 @@ int main()
 
         for (size_t i = 49; i < 100; i++)
         {
-            file_2 << std::rand() << '\n';
+            file_2 << rand() << '\n';
         }
 
         file_1.close();
@@ -99,10 +101,10 @@ int main()
 
         ///task 4: * Написать функцию, «склеивающую» эти файлы в третий текстовый файл (имя файлов спросить у пользователя).
         {
-            std::string merge_files;
+            string merge_files;
 
-            std::cout << "Enter the name for 2 previous files for further merge it:\n->";
-            std::cin >> merge_files;
+            cout << "Enter the name for 2 previous files for further merge it:\n->";
+            cin >> merge_files;
 
             concatenation(filename_1, filename_2, merge_files);
         }
@@ -110,18 +112,18 @@ int main()
 
     //task 5: * Написать программу, которая проверяет присутствует ли указанное пользователем при запуске программы слово в указанном пользователем файле (для простоты работаем только с латиницей). Используем функцию find которая есть в строках std::string.
     {
-        std::string user_word;
-        std::string namefile;
+        string user_word;
+        string namefile;
 
-        std::cout << "Enter word for search him in file:\n->";
-        std::cin >> user_word;
+        cout << "Enter word for search him in file:\n->";
+        cin >> user_word;
 
-        std::cout << " Enter the name of the file where you want to search for this word:\n";
-        std::cin >> namefile;
+        cout << " Enter the name of the file where you want to search for this word:\n";
+        cin >> namefile;
 
         if (user_word_in_file(user_word, namefile))
         {
-            std::cout << "File is found! "
+                cout << "File is found! "
                 << user_word
                 << "in file"
                 << namefile
@@ -130,7 +132,7 @@ int main()
 
         else
         {
-            std::cout << "The program could not find the desired file "
+                cout << "The program could not find the desired file "
                 << user_word
                 << "in file"
                 << namefile
@@ -152,8 +154,8 @@ int main()
         void printed_myarray(int const* const ptrMyarr1, size_t const myarray_size)
         {
         for (size_t i = 0; i < myarray_size; i++)
-        std::cout << ptrMyarr1[i] << " ";
-        std::cout << '\n';
+        cout << ptrMyarr1[i] << " ";
+        cout << '\n';
         }
 
         void initial_matrix(int** const matrix, size_t const rows, size_t const cols)
@@ -173,19 +175,19 @@ int main()
         {
             for (size_t i = 0; i < rows; i++) {
                 for (size_t j = 0; j < cols; j++) {
-                    std::cout << matrix[i][j] << " ";
+                    cout << matrix[i][j] << " ";
                 }
-                std::cout << '\n';
+                cout << '\n';
             }
         }
 
-        void concatenation(std::string const& filename_in_1, std::string const& filename_in_2, std::string const& filename_out)
+        void concatenation(string const& filename_in_1, string const& filename_in_2, string const& filename_out)
         {
-            std::string line_buf;
+            string line_buf;
 
-            std::ifstream file_in_1(filename_in_1);
-            std::ifstream file_in_2(filename_in_2);
-            std::ofstream file_out("filename_out.txt");
+            ifstream file_in_1(filename_in_1);
+            ifstream file_in_2(filename_in_2);
+            ofstream file_out("filename_out.txt");
 
             if (file_in_1.is_open())
             {
@@ -209,15 +211,15 @@ int main()
             file_out.close();
         }
 
-        bool user_word_in_file(std::string const& user_word, std::string const& namefile)
+        bool user_word_in_file(string const& user_word, string const& namefile)
         {
-            std::string line_buf;
+            string line_buf;
 
-            std::ifstream file(namefile);
+            ifstream file(namefile);
 
             if (!file.is_open()) 
             {
-                std::cerr << "File not found\n";
+                cerr << "File not found\n";
                 return false;
             }
 
@@ -225,7 +227,7 @@ int main()
             {
                 getline(file, line_buf);
 
-                if (line_buf.find(user_word) != std::string::npos)
+                if (line_buf.find(user_word) != string::npos)
                 {
                     return true;
                 }
