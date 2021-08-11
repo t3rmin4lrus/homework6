@@ -79,8 +79,8 @@ int main()
         std::cout << "Enter the two names of the files that will be created:\n->";
         std::cin >> filename_1 >> filename_2;
 
-        std::ofstream file_1(filename_1);
-        std::ofstream file_2(filename_2);
+        std::ofstream file_1("filename_1.txt");
+        std::ofstream file_2("filename_2.txt");
 
         std::srand(std::time(nullptr));
 
