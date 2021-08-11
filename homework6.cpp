@@ -86,12 +86,12 @@ int main()
 
         srand(time(nullptr));
 
-        for (size_t i = 49; i < 100; i++)
+        for (size_t i = 49; i < 101; i++)
         {
-            file_1 << i << '\n';
+            file_1 << rand() << '\n';
         }
 
-        for (size_t i = 49; i < 100; i++)
+        for (size_t i = 49; i < 101; i++)
         {
             file_2 << rand() << '\n';
         }
