@@ -141,20 +141,20 @@ int main()
     }
 
 }
- void init_myarray(int* const ptrMyarr1, size_t  myarray_size)
-{
-    if (myarray_size > 2 << sizeof(int))
+        void init_myarray(int* const ptrMyarr1, size_t  myarray_size)
+        {
+        if (myarray_size > 2 << sizeof(int))
         myarray_size = 2 << sizeof(int);
-    for (size_t i = 0; i < myarray_size; i++)
+        for (size_t i = 0; i < myarray_size; i++)
         ptrMyarr1[i] = 1 << i;
-}
+        }
 
-void printed_myarray(int const* const ptrMyarr1, size_t const myarray_size)
-{
-    for (size_t i = 0; i < myarray_size; i++)
+        void printed_myarray(int const* const ptrMyarr1, size_t const myarray_size)
+        {
+        for (size_t i = 0; i < myarray_size; i++)
         std::cout << ptrMyarr1[i] << " ";
-    std::cout << '\n';
-}
+        std::cout << '\n';
+        }
 
         void initial_matrix(int** const matrix, size_t const rows, size_t const cols)
         {
@@ -185,7 +185,7 @@ void printed_myarray(int const* const ptrMyarr1, size_t const myarray_size)
 
             std::ifstream file_in_1(filename_in_1);
             std::ifstream file_in_2(filename_in_2);
-            std::ofstream file_out(filename_out);
+            std::ofstream file_out("filename_out.txt");
 
             if (file_in_1.is_open())
             {
